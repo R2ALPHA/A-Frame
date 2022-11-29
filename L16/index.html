@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>L16- Adding lights and shadows</title>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Asset Management System -->
+        <a-assets>
+            <img id="floor" src="./floor-1024.jpg">
+            <img id="firefox" src="./firefox-quantum-1024.png">
+            <a-asset-item id="room" src="./room.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- Default Lightning in the A-Frame Scene -->
+        <!-- Ambient Light -->
+        <!-- The ambient lightning is called as general lighting, This can serves as the primary source of light for a certain room. -->
+        <!-- It is simply a soft light that is reflected off the ceiling. -->
+        <!-- <a-entity light="type:ambient; color: #BBB"></a-entity> -->
+
+        <!-- Directional Light -->
+        <!-- In this type of thing the source are usually very far far away -->
+        <!-- Think it like in which direction the SUN is; This might be a perfect analogy for the same -->
+        <!-- Here we have set the castShadow to true, but without adding shadow entity we will not have any shadow -->
+        <!-- <a-entity light="type:directional; color:#FFFFFF; intensity:0.6; castShadow:true" position="-0.5 1 1">
+        </a-entity> -->
+
+        <!-- Sky -->
+        <a-sky color="#212121"></a-sky>
+
+        <!-- Ground -->
+        <a-plane src="#floor" rotation="-90 0 0" scale="10000 10000 1" repeat="1000 1000" shadow="receive: true">
+        </a-plane>
+
+        <!-- Camera -->
+        <a-entity position="0 0 5">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <!-- Blue Room | x=4m  y=5m  z=14m -->
+        <a-entity gltf-model="#room" shadow="receive: true">
+
+        </a-entity>
+
+        <!-- FireFox Quantum Logo -->
+        <a-image src="#firefox" scale="2 2 1" position="-2 3 -2.49"></a-image>
+
+        <!-- Light Gray Panel -->
+        <a-box color="#E0E0E0" scale="5 0.1 1" position="0 4 0"></a-box>
+
+        <!-- Yellow Box -->
+        <a-box color="#FFE83B" scale="0.5 0.5 0.5" position="-1 1 0" shadow="cast:true" shader="flat">
+            <a-animation attribute="rotation" to="0 360 0" repeat="indefinite" dur="5000" easing="linear"></a-animation>
+        </a-box>
+
+        <!-- Orange Box -->
+        <a-box id="orange-box" color="#FF5722" scale="0.5 0.5 0.5" position="1 1 0" shadow="cast: true">
+            <a-animation attribute="rotation" to="0 360 0" repeat="indefinite" dur="5000"></a-animation>
+            <a-animation attribute="position" to="1 1 -2" repeat="indefinite" direction="alternate" dur="5000">
+            </a-animation>
+        </a-box>
+
+        <!-- Custom Light | Ambient Lightning | Room Lightning -->
+        <a-entity light="type: ambient; intensity: 0.2">
+        </a-entity>
+        <!-- Custom Light | Point Light -->
+        <!-- Light like candle -->
+        <!-- Since it is a point light, we can set at what distance the intensity will be 0 or the source of the light will get dimmed -->
+        <a-entity light="type: point; intensity:0.8; distance: 10; castShadow:true" position="0 2 1.5">
+            <a-animation attribute="light.intensity" from="0.8" to="0" repeat="indefinite" direction="alternate"
+                dur="5000">
+
+            </a-animation>
+        </a-entity>
+
+        <!-- Custom Light | Spot Light -->
+        <!-- As the name means, it is putting something on spot, hence spot light -->
+        <!-- In this case the lightning is unidirectional -->
+        <!-- Casting shadow, can be quite expensive, so we can take help of other technique to cast shadow -->
+        <a-entity light="type: spot; target: #orange-box; color: #c40070; angle:30; penumbra:0.1; castShadow:true"
+            position="0 3 1">
+
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>

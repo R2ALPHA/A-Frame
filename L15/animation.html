@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>L15- Animating Objects</title>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Assets Management System -->
+        <a-assets>
+            <img id="floor" src="floor-1024.jpg">
+        </a-assets>
+        <!-- Ground -->
+        <a-plane src="#floor" shader="flat" rotation="-90 0 0" scale="5 5 1">
+
+        </a-plane>
+        <a-entity position="0 0 8">
+            <a-camera></a-camera>
+        </a-entity>
+        <!-- Box -->
+        <a-box color="#AA0000" position="0 4 0">
+            <a-animation attribute="rotation" to="0 360 0" repeat="indefinite" dur="5000" easing="linear">
+
+            </a-animation>
+        </a-box>
+        <!-- Box -->
+        <a-entity position="0 4 0">
+            <a-animation attribute="rotation" to="0 -360 0" repeat="indefinite" dur="5000" easing="linear">
+
+            </a-animation>
+            <a-box color="#689f38" position="2 0 0">
+                <a-animation attribute="rotation" to="0 360 0" repeat="indefinite" dur="5000" easing="linear">
+
+                </a-animation>
+            </a-box>
+        </a-entity>
+        <!-- Moving box-->
+        <!-- Basic easing function-->
+        <!-- ease, ease-in, ease-out, ease-in-out-->
+        <a-box color="#FFAA00" position="0 0.5 0">
+            <a-animation attribute="position" from="-2 0.5 -2" to="-2 0.5 2" repeat="indefinite" dur="3000"
+                direction="alternate" easing="linear"></a-animation>
+        </a-box>
+        <!-- Scaling box-->
+        <!-- Extra groups of easing functions (suffixes)-->
+        <!-- Cubic, Quad, Quart, Quint, Sine, expo, circ, elastic, back, bounce-->
+        <a-box color="#FFAA00" position="2 0.5 0">
+            <a-animation attribute="scale" to="0.2 1 5" repeat="indefinite" direction="alternate" dur="3000"
+                easing="ease-out-bounce">
+
+            </a-animation>
+        </a-box>
+
+        <!-- Animated Color-->
+        <a-sphere color="#0000AA" radius="0.5" position="0 2.25 0">
+            <a-animation attribute="material.color" from="#00AAFF" to="#0000AA" repeat="indefinite"
+                direction="alternate" dur="1500"></a-animation>
+        </a-sphere>
+        <!-- Animate opacity of the object-->
+        <a-cone color="#484848" position="0 0.5 0">
+            <a-animation attribute="material.opacity" from="0" to="1" repeat="indefinite" direction="alternate"
+                dur="1500"></a-animation>
+        </a-cone>
+    </a-scene>
+</body>
+
+</html>
