@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>L17 - The A Frame Inspector</title>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Asset Management System -->
+        <!-- First cache all the assets -->
+        <a-assets>
+            <img id="floor" src="./floor-1024.jpg">
+            <!-- https://sketchfab.com/models/e512a5adb1904a71a1bd53c4a21b48d4 -->
+            <a-asset-item id="tl" src="./traffic_light/traffic_light.gltf"></a-asset-item>
+            <!-- https://sketchfab.com/models/fdc8b5ba548243448f9b918ea7892786 -->
+            <a-asset-item id="ssl" src="./suburban_street_lamp/street_light.gltf"></a-asset-item>
+            <!-- To troubleshoot issues related to renaming 3D objects check Lecture 14 -->
+        </a-assets>
+
+        <!-- Custom Light | Ambient -->
+        <a-entity light="type: ambient; intensity: 0.2"></a-entity>
+
+        <!-- Custom Light | Directional -->
+        <a-entity light="type: directional; intensity:0.2" position="-0.5 1 1"></a-entity>
+
+        <!-- Sky -->
+        <a-sky color="#212121"></a-sky>
+
+        <!-- Ground -->
+        <a-plane src="#floor" rotation="-90 0 0" scale="20 20 1" repeat="2 2"></a-plane>
+
+        <!-- Camera -->
+        <a-entity position="0 0 9">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <!-- Finally load the modal -->
+
+        <!-- Traffic Light -->
+        <a-entity gltf-model="#tl" position="-3.242 0.127 0.319" scale="0.5 0.5 0.5"></a-entity>
+
+        <!-- Suburban Street Lamp -->
+        <a-entity gltf-model="#ssl" position="4.689 1.058 -0.095" rotation="0 180 0"></a-entity>
+
+        <!-- Red Light -->
+        <a-entity position="-2.977 1.262 0.411" id="red-light"
+            light="decay:4;intensity:4;type:point;color:#CC0000;distance:0.4"></a-entity>
+
+        <!-- Sub urban light bulb-->
+        <a-entity position="3.586 2.023 -0.104" id="light-bulb"
+            light="distance:2;color:#ffec1a;intensity:4;type:point;decay:2"></a-entity>
+
+        <!-- Spot Light -->
+        <a-entity position="3.19 2.613 -0.159" id="light-cone" light="angle:45;type:spot;color:#ffec1a;penumbra:0.3"
+            rotation="-90 0 0"></a-entity>
+
+    </a-scene>
+</body>
+
+</html>
