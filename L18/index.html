@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>L18 - Cursor primitive and component</title>
+    <!-- Synthetic events -->
+    <!-- click, mouseenter, mouseleave, mousedown, mouseup, fusing -->
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+
+        <!-- Cursor Primitive -->
+        <!-- The a cursor primitive is usually placed as a child of camera -->
+        <!-- By default the cursor primitive is fixed -->
+        <!-- The A-frame cursor component is not a substitute of the mouse cursor, but it is a componet
+            that will provide us the synthentic component. The cursor component is built on top of rayster component
+        -->
+
+        <!-- Visible Raycaster -->
+        <!-- <a-entity position="0 1.6 0" rotation="-12 0 0">
+            <a-cursor raycaster="showLine: true">
+            </a-cursor>
+        </a-entity> -->
+        <!-- <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera> -->
+        <!-- Left Red Box -->
+
+        <!-- Cursor Component -->
+        <a-camera>
+            <a-entity cursor position="0 0 -1" geometry="primitive: sphere; radius:0.005"
+                material="color: #000000; shader:flat">
+
+            </a-entity>
+        </a-camera>
+        <a-sky color="#FFFFFF"></a-sky>
+        <a-box color="#AA0000" position="-2 0 -7"></a-box>
+
+        <!-- Center Red Box -->
+        <a-box color="#AA0000" position="0 0 -7"></a-box>
+
+        <!-- Right Red Box -->
+        <a-box color="#AA0000" position="2 0 -7"></a-box>
+    </a-scene>
+</body>
+
+</html>
