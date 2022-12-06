@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>L24 - Physics and Collisions</title>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v3.13.1/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+    <a-scene physics="gravity:-9.8; restitution:1">
+
+        <!-- Assets Management System -->
+        <a-assets>
+            <img id="ground" src="./floor-1024.jpg">
+        </a-assets>
+
+        <!-- Progressive Controls -->
+        <a-entity progressive-controls position="0 0 5"></a-entity>
+
+        <!-- Ground -->
+        <a-plane src="#ground" scale="50 50 1" repeat="5 5 1" rotation="-90 0 0" static-body>
+
+        </a-plane>
+
+        <!-- Red Box -->
+        <a-box color="#AA0000" position="-3.5 0.5 -4">
+            <a-box color="#AA0000" visible="false" opacity="0.2" scale="2 3 1.5" position="0 1 0" static-body>
+
+            </a-box>
+        </a-box>
+
+        <!-- Green Sphere -->
+        <a-sphere color="#00AA00" radius="0.5" position="-1 4 -4" dynamic-body="linearDamping: 0.05; mass:1" grabbable>
+
+        </a-sphere>
+        </a-sphere>
+        </a-sphere>
+        </a-sphere>
+
+        <!-- Yello Sphere -->
+        <a-sphere color="#FFAA00" radius="0.5" position="1 4 -4"
+            dynamic-body="linearDamping: 0.5; angularDamping:0.3; mass:10" grabbable>
+
+        </a-sphere>
+
+        <!-- Blue Box -->
+        <a-box color="#00AAFF" position="3.5 2 -4" static-body="shape: sphere; sphereRadius:1"
+            event_set__color="_event:collide; material.color:#0055AA">
+            <a-animation attribute="rotation" to="0 360 0" repeat="indefinite" dur="3000"></a-animation>
+        </a-box>
+    </a-scene>
+</body>
+
+</html>
+
+<!--
+     Physics And Collisions
+    1. We need to attach physics system to a-scene object. 
+    2. Dynamic Body to get the gravity fit 
+    3. Static body (If nothing will pass through it, then it's a static body)
+    4. We also learn about linear damping
+    5. We learnt about angular damping
+    6. When collision happens entity emit the collide event
+    7. By default the mass of the object is 5
+
+-->
