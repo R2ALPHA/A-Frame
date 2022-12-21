@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>L26- Video Component</title>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('play-pause', {
+            init: function () {
+                const myVideo = document.querySelector('#surfer');
+                const videoControls = document.querySelector('#videoControls');
+                this.el.addEventListener('click')
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene>
+
+        <!-- Asset Management System -->
+        <a-assets>
+            <img id="play" src="./play.png">
+            <img id="pause" src="./pause.png">
+            <video id="surfer" src="../video/surf.mp4" loop="true"></video>
+        </a-assets>
+
+        <!-- Camera -->
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+        <!-- Video 16:9 -->
+        <a-video src="#surfer" width="8" height="4.5" positio="0 3 -9">
+            <!-- Play / Pause -->
+            <a-image id="videoControls" src="#play" position="0 -3 0" scale="0.5 0.5 1">
+
+            </a-image>
+        </a-video>
+
+    </a-scene>
+</body>
+
+</html>
+
+<!-- Video Attribute 
+
+
+
+-->
