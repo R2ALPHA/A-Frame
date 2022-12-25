@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text Component</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Camera -->
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+        <!-- Text -->
+        <a-entity position="0 1.8 -1" scale="0.5 0.5 1" text="value: Hi There !\n This is some more text
+            1234567890
+            1234567890
+            ; color:#212121;align:center; wrapCount:40; width: 1;fonts:
+            https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/cabin/Cabin-Medium.json"
+            event-set__enter=" _event:mouseenter; text.color: #FF0000"
+            event-set__leave="_event:mouseleave; text.color: #212121"
+            geometry="primitive:plane; width:auto; height:auto" material="color: #DDDDDD; shader: flat; visible: false">
+        </a-entity>
+
+        <!-- Place holder-->
+        <a-box color="#FFAA00" position="0 0.5 -4"></a-box>
+    </a-scene>
+</body>
+
+</html>
+
+<!--
+    By default text color is white. 
+    Default alignment is left for the text
+
+    We are trying to create an hover effect, but the hover effect will not work the reason is we need to have some kind of 
+    plane for interaction, I think some sort of text area will work fine here. 
+
+        <a-entity position="0 1.8 -1"
+            text="value: Hi There !\n This is some more text; color:#212121;align:center; wrapCount:40"
+            event-set__enter="_event:mouseenter; text.color: #FF0000"
+            event-set__leave="_event:mouseleave; text.color: #212121">
+
+        </a-entity>
+
+        The wrap count property affects the text size as well.
+        We can change the text size through the width property or by attaching the scale component to the entity
+        The scale property may be more conveninet as it will change both the text size and the plane as compared 
+        to the width which will change only the text size and not the plane.
+
+        The a frame supports the MSDF format, 
+        https://github.com/etiennepinchon/aframe-fonts
+
+        Not all fonts look good or works as expected in virtual reality.
+        So we should follow some rules
+        http://vovakurbatov.com/articles/10-rules-of-using-fonts-in-virtual-reality
+-->
