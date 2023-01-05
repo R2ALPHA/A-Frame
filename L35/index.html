@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movement Control Component</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <!-- https://github.com/n5ro/aframe-extras -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v3.13.1/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+    <!-- The vr mode ui button will be toggled off, from this what I understood is 
+        that we can't go to the VR mode, we need to try things differently
+    -->
+    <a-scene>
+
+        <!-- Camera Rig -->
+        <!-- It's important to note that when you want to use movement controls 
+            then you need a camera rig that will wrap the camera component.
+            It's not an option. It's mandatory to have the camera rig wrapper. 
+            As we will be attaching the movemnt control component to the camera rig
+        -->
+        <a-entity movement-controls="speed: 1500000" position="0 0 6">
+            <a-entity camera position="0 1.6 0" look-controls="pointerLockEnabled: true">
+                <a-cursor></a-cursor>
+            </a-entity>
+        </a-entity>
+
+        <!-- Ground -->
+        <a-plane color="#DDDDDD" shader="flat" rotation="-90 0 0" scale="8 4 1"></a-plane>
+
+        <!-- Cylinder -->
+        <a-cylinder color="#AA0000" radius="0.5" position="1.5 0.5 0" keypress>
+        </a-cylinder>
+
+        <!-- Box -->
+        <a-box color="#00AA00" width="0.5" depth="3" position="-1.5 0.5 0"></a-box>
+    </a-scene>
+</body>
+
+</html>
