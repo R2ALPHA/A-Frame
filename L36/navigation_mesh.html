@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Navigation Meshes </title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <!-- https://github.com/n5ro/aframe-extras -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+</head>
+
+<body>
+    <a-scene background="color: #FFFFFF" inspector-plugin-recast>
+        <!-- Camera Rig-->
+        <a-entity movement-controls="speed: 0.15" position="0 0 6">
+            <!-- Camera -->
+            <a-entity camera position="0 1.6 0" look-controls="pointerLockEnabled: true">
+                <a-cursor></a-cursor>
+            </a-entity>
+        </a-entity>
+
+        <!-- Ground -->
+        <a-plane color="#333333" shader="flat" rotation="-90 0 0" scale="8 6 1"></a-plane>
+
+        <!-- Cylinder -->
+        <a-cylinder color="#AA0000" radius="0.5" position="1.5 0.5 0"></a-cylinder>
+
+        <!-- Box -->
+        <a-box color="#00AA00" width="0.5" depth="3" position="-1.5 0.5 0"></a-box>
+    </a-scene>
+</body>
+
+</html>
+
+<!-- 
+    Navigation Mesh 
+====================================
+The navigation mesh are useful if you want to define which area of the scenes should be 
+traversal by the user. Also can be useful for things like artifical locomotion
+and other.
+https://github.com/donmccurdy/aframe-inspector-plugin-recast
+https://web.archive.org/web/20110807104022/http://www.ai-blog.net:80/archives/000152.html
+
+We have to add inspector plugin recast component to our scenes.
+The build is failing due to one oe more reason. 
+The navigation mesh is quite important for project which requires us to build paths.
+In this lecture, there are some resources regarding gltf2-blender importer. 
+
+-->
